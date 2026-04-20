@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{systeme}
+\begin{document}
+
+\section{Exercício 1 - Eliminação de Gauss}
+
+\subsection{Contexto - Teorema de Bolzano}
+
+\subsection{Resolução}
+    \[
+        \systeme{2x_1 + x_2 - x_3 = 8, -3x_1 - x_2 + 2x_3 = -11, -2x_1 + x_2 + 2x_3 = -3}
+    \]
+    \subsubsection{Passo 1 - Verificar se o sistema admite solução única}
+        \[
+            det(A) = -4 - 4 + 3 + 2 + 6 - 4 = -8 + 5 + 2 = -3 + 2 = -1
+        \]
+        $det(A) != 0$, então o sistema é consistente e adimite uma única solução. Observamos, também, que o sistem tem a matriz \textit{A} e \textit{b} de dimensão $n = 3$ portanato são esperados somente $n-1 = 2$ passos de eliminação de Gauss.
+
+        A matriz \textit{A} e o termo \textit{b} serão indicados com $A^{(0)}$ e $b^{(0)}$.
+        \[
+            (A_{(0)}|b^{(0)}) =
+            \left(
+            \begin{array}{ccc|c}
+                2x_1 & x_2 & -x_3 & 8 \\
+                -3x_1 & -x_2 & x_3 & -11 \\
+                -2x_1 & x_2 & 2x_3 & -3 \\
+            \end{array}
+            \right)
+        \]
+    \subsubsection{Passo 2 - k = 1}
+        usando $(A_{(0)}|b^{(0)}) =
+            \left(
+            \begin{array}{ccc|c}
+                2x_1 & x_2 & -x_3 & 8 \\
+                -3x_1 & -x_2 & x_3 & -11 \\
+                -2x_1 & x_2 & 2x_3 & -3 \\
+            \end{array}
+            \right)$ geramos $m_{i1}$ com i = 2, 3 para poder anular os termos $a_{i1}$, sendo que $a_{11} \neq 0$. Obtemos $m_{21} = \frac{a^{(0)}_{21}}{a^{(0)}_{11}} = \frac{-3}{2}$ e $m_{31} = \frac{a^{(0)}_{31}}{a^{(0)}_{11}} = \frac{-2}{2} = -1$.
+
+            Usamos $m_21$ para gerar a linha 2 de $A^{(1)}$ e $b^{(1)}$:
+            \[
+                a^{1}_{21} = a^{0}_{21} - m_{21}a^{0}_{11} = -3 - \frac{-3}{2}2 = -\frac{6}{2} + \frac{6}{2} = 0
+            \]
+            \[
+                a^{1}_{22} = a^{0}_{22} - m_{21}a^{0}_{12} = -1 - \frac{-3}{2}1 = -\frac{2}{2} + \frac{3}{2} = \frac{1}{2}
+            \]
+            \[
+                a^{1}_{23} = a^{0}_{23} - m_{21}a^{0}_{13} = 1 - \frac{-3}{2}(-1) = \frac{2}{2} - \frac{3}{2} = -\frac{1}{2}
+            \]
+            \[
+                b^{1}_{2} = b^{0}_{2} - m_{21}b^{0}_{1} = -11 - \frac{-3}{2}8 = -\frac{22}{2} + \frac{24}{2} = \frac{2}{2} = 1 
+            \]
+
+            Usamos $m_31$ para gerar a linha 3 de $A^{(1)}$ e $b^{(1)}$:
+            \[
+                a^{1}_{31} = a^{0}_{31} - m_{31}a^{0}_{11} = -2 - (-1)2 = -2 + 2 = 0
+            \]
+            \[
+                a^{1}_{32} = a^{0}_{32} - m_{31}a^{0}_{12} = 1 - (-1)1 = 1 + 1 = 2
+            \]
+            \[
+                a^{1}_{33} = a^{0}_{33} - m_{31}a^{0}_{13} = 2 - (-1)(-1) = 2 - 1 = 1
+            \]
+            \[
+                b^{1}_{3} = b^{0}_{3} - m_{31}b^{0}_{1} = -3 - (-1)8 = -3 + 8 = 5
+            \]
+
+            \[
+                (A_{(1)}|b^{(1)}) =
+                \left(
+                    \begin{array}{ccc|c}
+                        2x_1 & x_2 & -x_3 & 8 \\
+                         & \frac{x_2}{2} & -\frac{x_3}{2} & 1 \\
+                         & 2x_2 & x_3 & 5 \\
+                    \end{array}
+                \right)
+            \]
+
+    \subsubsection{Passo 3 - k = 2}
+        Do primeiro passo obtemos o sistema com matriz e termo independente $(A^{(1)}|b^{(1)}) = \left(
+                    \begin{array}{ccc|c}
+                        2x_1 & x_2 & -x_3 & 8 \\
+                         & \frac{x_2}{2} & -\frac{x_3}{2} & 1 \\
+                         & 2x_2 & x_3 & 5 \\
+                    \end{array}
+                \right)$ Agora usando a $m_{32} = \frac{a^{(1)}_{32}}{a^{(1)}_{22}} = \frac{2}{\frac{1}{2}} = 4$ no segundo passo anularemos o elemento $a_{32}$:
+            \[
+                a^{2}_{32} = a^{1}_{32} - m_{32}a^{1}_{22} = 2 - 4\frac{1}{2} = 2 - 2 = 0
+            \]
+            \[
+                a^{2}_{33} = a^{1}_{33} - m_{32}a^{1}_{23} = 1 - 4\frac{-1}{2} = 1 + 2 = 3
+            \]
+            \[
+                b^{2}_{3} = b^{1}_{3} - m_{32}b^{1}_{2} = 5 - 4*1 = 1 
+            \]
+
+
+            \[
+                (A_{(2)}|b^{(2)}) =
+                \left(
+                    \begin{array}{ccc|c}
+                        2x_1 & x_2 & -x_3 & 8 \\
+                         & \frac{x_2}{2} & -\frac{x_3}{2} & 1 \\
+                         &  & 3x_3 & 1 \\
+                    \end{array}
+                \right)
+            \]
+
+\subsubsection{Passo 4 - Resolver o sistema linear}
+    O sistema final $A^(2)x = b^(2)$ resulta em:
+    \[
+        \systeme{2x_1 + x_2 - x_3 = 8, \frac{x_2}{2} + \frac{-x_3}{2} = 1,3x_3 = 1}
+    \]
+
+    \[
+        3x_3 = 1 \rightarrow x_3 = \frac{1}{3}
+    \]
+\[
+        \frac{x_2}{2} + \frac{-x_3}{2} = 1 \rightarrow \frac{x_2}{2} + \frac{-\frac{1}{3}}{2} = 1 \rightarrow \frac{x_2}{2} - \frac{1}{6} = 1 \rightarrow \frac{x_2}{2} = \frac{6}{6} + \frac{1}{6} \rightarrow \frac{x_2}{2} = \frac{7}{6} \rightarrow x_2 = \frac{14}{6}
+    \]
+    \[
+        2x_1 + x_2 - x_3 = 8 \rightarrow 2x_1 + \frac{14}{6} - \frac{1}{3} = 8 \rightarrow 2x_1 + \frac{14}{6} - \frac{2}{6} = 8 \rightarrow 2x_1 + \frac{12}{6} = 8 \rightarrow 2x_1 + 2 = 8 \rightarrow 2x_1 = 6 \rightarrow x_1 = 3
+    \]
+
+    A solução é portanto $(x_1, x_2, x_3) = (3, \frac{14}{6}, \frac{1}{3})$.
+
+\section{Exercício 2 - Decomposição LU}
+
+\section{Exercício 3 - Método de Cholesky}
+
+\section{Exercício 4 - Método de Jacobi-Richardson}
+
+\section{Exercício 5 - Método de Gauss-Seidel}
+
+\section{Exercício 6 - Método SOR}
+
+\end{document}
