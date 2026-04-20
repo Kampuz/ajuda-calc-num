@@ -1,13 +1,16 @@
 \documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
 \begin{document}
 
 \section{Exercício 1 - Isolamento de raízes}
 
 \subsection{Contexto - Teorema de Bolzano}
+    Baseado em \cite{brasilead2026}.
     \subsubsection{Explicação: Analogia da Ponte}
         Pense no teorema como uma ponte sobre um rio: se você começa em uma margem (onde $f(a)$ tem um sinal) e termina na outra margem (onde $f(b)$ tem o sinal oposto), e a ponte é contínua (a função é contínua), você obrigatoriamente cruzou o rio (passou pelo ponto onde $f(x) = 0$)
 
-        Ou seja, o teorame garante a existência de pelo menos uma raiz, podendo haver um número ímpar de raízes. Porém, se $f(a)$ e $f(b)$ têm o mesmo sinal, pode haver um número par de raízes ou nenhuma, e não é possível usar esse teorema.
+        Ou seja, o teorema garante a existência de pelo menos uma raiz, podendo haver um número ímpar de raízes. Porém, se $f(a)$ e $f(b)$ têm o mesmo sinal, pode haver um número par de raízes ou nenhuma, e não é possível usar esse teorema.
 
     \subsubsection{Pass-a-passo}
         \begin{enumerate}
@@ -17,7 +20,7 @@
             \item \textbf{Verifique a Mudança de Sinal:} Observe os sinais de $f(a)$ e $f(b)$. Se eles forem opostos (um positivo e outro negativo), então o Teorema de Bolzano garante que existe pelo menos uma raiz no intervalo $(a,b)$.
         \end{enumerate}  
 
-\subsection{a) $f(x) = x^3 - 2x - 5$}
+\subsection{\texorpdfstring{a) $f(x) = x^3 - 2x - 5$}{a) f(x) = x3 - 2x - 5}}
 
     \subsubsection{Passo 1 - Verificar a Continuidade}
         A função $f(x) = x^3 - 2x - 5$ é um polinômio, portanto é contínua em todo os Reais.
@@ -35,7 +38,7 @@
 \subsubsection{Passo 4 - Verificar a Mudança de Sinal}
         $f(-5) < 0$ e $f(5) > 0$, logo existe $x \in [-5,5]$ tal que $f(x) = 0$
 
-\subsection{b) $f(x) = x^2 - cos(x)$}
+\subsection{\texorpdfstring{b) $f(x) = x^2 - \cos(x)$}{b) f(x) = x2 - cos(x)}}
 
     \subsubsection{Passo 1 - Verificar a Continuidade}
         A função $f(x) = x^2 - cos(x)$ é uma função polinômica trigonométrica, portanto é contínua em todo os Reais.
@@ -58,7 +61,7 @@
         $f(-1) > 0$ e $f(0) < 0$, logo existe $x \in [-1,0]$ tal que $f(x) = 0$ \\
         $f(0) < 0$ e $f(1) > 0$, logo existe $x \in [0,1]$ tal que $f(x) = 0$
 
-\subsection{c) $f(x) = e^x - x$}
+\subsection{\texorpdfstring{c) $f(x) = e^x - x$}{c) f(x) = ex - x}}
 
     \subsubsection{Passo 1 - Verificar a Continuidade}
         A função $f(x) = e^x - x$ é um polinômio, portanto é contínua em todo os Reais.
